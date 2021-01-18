@@ -15,9 +15,39 @@ body {
   margin: 0;
   padding: 0;
   height: 100vh;
+  color: white;
 }
 
 .background {
   width: 100%;
   height: 100vh;
+}
+
+.form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+.btn:focus,
+.btn-primary:focus,
+.btn-primary:active:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.search-city {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.search-btn {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.weather-container {
+  margin-top: -90px;
+}
+
+.info-container {
+  margin-top: -30px;
+  margin-bottom: 30px;
 }

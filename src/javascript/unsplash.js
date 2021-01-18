@@ -14,7 +14,7 @@ export default class unsplashAPI {
       const imgURL = Math.floor(Math.random() * items.results.length) + 1;
       this.image = items.results[imgURL].urls.full;
 
-      bg.style.background = `url(${this.image}) no-repeat center`;
+      bg.style.background = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.80)), url(${this.image}) no-repeat center`;
       bg.style.backgroundSize = 'cover';
     });
   }
