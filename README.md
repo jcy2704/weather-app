@@ -37,7 +37,7 @@ Weather App is a dynamic app that shows the current weather of different countri
 
 ## Live Preview
 
-[Weather App]()
+[Weather App](https://jcy2704.github.io/weather-app/)
 
 ## Getting Started
 
