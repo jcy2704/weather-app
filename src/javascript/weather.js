@@ -91,7 +91,7 @@ export default class Weather {
     if (this.latitude && this.longitude) {
       response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&units=metric&appid=${weatherKey}`, { mode: 'cors' });
     } else {
-      response = await fetch(`http://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=${weatherKey}`);
+      response = await fetch(`https://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=${weatherKey}`);
     }
 
     this.allCities = await fetch('city.list.json');
