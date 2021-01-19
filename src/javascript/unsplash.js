@@ -1,4 +1,4 @@
-const unsplashKey = process.env.BG_KEY;
+const unsplashKey = process.env.BG_API;
 
 export default class unsplashAPI {
   constructor() {
@@ -8,13 +8,13 @@ export default class unsplashAPI {
   async fetchBg(weather) {
     const bg = document.querySelector('.background');
 
-    const response = await fetch(`https://api.unsplash.com/search/photos?page=1?c&query=${weather}&orientation=landscape&client_id=${unsplashKey}`, { mode: 'cors' });
+    const response = await fetch(`https://api.unsplash.com/search/photos?page=1?c&query=${weather}&per_page=15&orientation=landscape&client_id=${unsplashKey}`, { mode: 'cors' });
 
     response.json().then(items => {
       const imgURL = Math.floor(Math.random() * items.results.length) + 1;
       this.image = items.results[imgURL].urls.full;
 
-      bg.style.background = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.80)), url(${this.image}) no-repeat center`;
+      bg.style.background = `linear-gradient(to bottom, rgba(245, 246, 252, 0), rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.80)), url(${this.image}) no-repeat center`;
       bg.style.backgroundSize = 'cover';
     });
   }

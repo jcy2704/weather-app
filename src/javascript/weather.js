@@ -1,7 +1,7 @@
 import UnsplashBG from './unsplash';
 import weatherInfo from './weatherInfo';
 
-const weatherKey = process.env.WEATHER_KEY;
+const weatherKey = process.env.WEATHER_API;
 
 const imgBG = new UnsplashBG();
 
