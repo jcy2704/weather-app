@@ -9,7 +9,7 @@
 <p align="center">
   <strong>Project created by Steven Jack Chung</strong>
   <br>
-  Project created using <a href="https://openweathermap.org/">OneWeatherMap API</a> and <a href="https://unsplash.com">Unsplash API</a>
+  Project created using <a href="https://openweathermap.org/">OpenWeatherMap API</a> and <a href="https://unsplash.com">Unsplash API</a>
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@
 
 # Weather App
 
-Weather App is a dynamic app that shows the current weather of different countries. Used JavaScript with DOM API to render and manipulate HTML. Implemented asynchrous functions and promises to access public APIs; OneWeatherMap API to render the weather information and Unsplash API to render the background depending on the current weather.
+Weather App is a dynamic app that shows the current weather of different countries. Used JavaScript with DOM API to render and manipulate HTML. Implemented asynchrous functions and promises to access public APIs; OpenWeatherMap API to render the weather information and Unsplash API to render the background depending on the current weather.
 
 ## Built With
 
