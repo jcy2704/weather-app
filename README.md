@@ -45,14 +45,14 @@ Weather App is a dynamic app that shows the current weather of different countri
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+## Prerequisites
 
 Computer running Mac OS, Windows, or Linux Ubuntu.
 Internet browser: Firefox, Google Chrome, Opera...
 
 Install [NodeJs](https://nodejs.org/en/download/)
 
-### Setup
+## Setup
 
 Download the code or copy the git repository to your computer.
 
@@ -62,9 +62,33 @@ To install dependencies you need to run the following command in your terminal.
   npm install
 ```
 
-### Usage
+## Usage
 
 Run live server extension in VSCode or run the index.html file in dist folder from the cloned repository.
+
+### Environmental Variables
+
+To create your own environmental variable for your API Key create a `.env` file in your root folder. Add `.env` to your gitignore as well if not added.
+
+
+In your `.env` file create a variable and assign your key to it.
+
+```
+    // .env file
+
+    API_KEY=123Abc456DefG...
+    API_KEY2=123Abc456DefG...
+```
+
+To use your API key use `process.env` and attach your API variable.
+
+```
+    weatherKey = process.env.API_KEY;
+```
+
+### Compile and Run
+
+After changing the code you will need to compile your work to be able to run.
 
 Use these scripts to compile your work.
 
