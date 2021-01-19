@@ -6,6 +6,19 @@ const weatherKey = process.env.WEATHER_API;
 
 const imgBG = new UnsplashBG();
 
+function citiesListCont() {
+  const ul = document.createElement('ul');
+  const div = document.createElement('div');
+
+  ul.className = 'cities-list';
+  div.className = 'cities-list-cont';
+
+  ul.innerHTML = '';
+
+  div.appendChild(ul);
+  return div;
+}
+
 export default class Weather {
   constructor() {
     this.currentLocation = this.currentLocation.bind(this);
@@ -14,6 +27,7 @@ export default class Weather {
     this.loader = this.loader.bind(this);
     this.setTemp = this.setTemp.bind(this);
     this.container = document.querySelector('.weather-container');
+    this.searchCity = this.searchCity.bind(this);
   }
 
   loader(state) {
@@ -54,9 +68,11 @@ export default class Weather {
       response = await fetch(`http://api.openweathermap.org/data/2.5/weather?id=${id}&units=metric&appid=${weatherKey}`);
     }
 
-    response.json()
+    await response.json()
       .then(items => {
         const tempSwitch = document.querySelector('.temp-checkbox');
+        const searchBtn = document.querySelector('.search-btn');
+        const main = document.querySelector('.main');
         const { temp } = items.main;
         const { weather: weatherAll } = items;
         const weather = weatherAll[0].main;
@@ -70,6 +86,11 @@ export default class Weather {
           this.setTemp(temp);
         });
 
+        searchBtn.addEventListener('click', () => {
+          main.appendChild(citiesListCont());
+          this.searchCity();
+        });
+
         this.loader(false);
       });
   }
@@ -79,9 +100,21 @@ export default class Weather {
     this.longitude = null;
     const response = await fetch('city.list.json');
 
-    response.json()
+    await response.json()
       .then(items => {
         this.currentWeather(items[Math.floor(Math.random() * items.length) + 1].id);
       });
+  }
+
+  async searchCity() {
+    const main = document.querySelector('.main');
+    const searchInput = document.getElementById('searchCity');
+    const searchResult = searchInput.value;
+
+    if (searchResult) {
+
+      const cities = await fetch('city.list.json');
+    }
+    this.cities = searchInput;
   }
 }
