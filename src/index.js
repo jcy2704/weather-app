@@ -19,3 +19,30 @@ function permissionHanldler() {
 }
 
 permissionHanldler();
+
+const searchBtn = document.querySelector('.search-btn');
+const searchInput = document.getElementById('searchCity');
+let counter = 0;
+
+searchBtn.addEventListener('click', () => {
+  if (searchInput.value !== '') {
+    weather.searchCity();
+    searchInput.value = '';
+  } else {
+    counter += 1;
+    searchInput.classList.add('input-warning');
+
+    if (counter >= 3) {
+      searchInput.placeholder = 'PLEASE ENTER A CITY!!';
+    } else {
+      searchInput.placeholder = 'Please Enter a City';
+    }
+  }
+});
+
+searchInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    searchBtn.click();
+  }
+});
