@@ -57,7 +57,14 @@ body {
   width: 60px;
   height: 34px;
   top: 50px;
-  right: 50px;
+  right: 70px;
+}
+
+@media only screen and (max-width: 350px) {
+  .switch {
+    top: 30px;
+    right: 30px;
+  }
 }
 
 .switch input {
@@ -115,15 +122,16 @@ input:checked + .slider::before {
 .fahrenheit {
   position: relative;
   top: 7px;
-  left: 7px;
+  left: 8px;
+  font-weight: bold;
 }
 
 .celsius {
   position: relative;
   top: 7px;
   right: -17px;
+  font-weight: bold;
 }
-
 
 .text-anim {
   opacity: 0;
