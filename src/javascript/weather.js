@@ -28,6 +28,7 @@ export default class Weather {
     this.setTemp = this.setTemp.bind(this);
     this.container = document.querySelector('.weather-container');
     this.searchCity = this.searchCity.bind(this);
+    this.setTempRN = this.setTempRN.bind(this);
   }
 
   loader(state) {
@@ -38,16 +39,27 @@ export default class Weather {
     this.loadAnim.classList.add(`${state ? 'd-block' : 'd-none'}`);
   }
 
+  setTempRN(currentTemp) {
+    this.temp = document.querySelector('.temp-checkbox');
+    const temp = document.getElementById('weatherTemp');
+    const fahrenheit = (currentTemp * (9 / 5)) + 32;
+
+    temp.textContent = this.temp.checked ? `${Number((fahrenheit).toFixed(1))}°F` : `${Number((currentTemp).toFixed(1))}°C`;
+  }
+
   setTemp(currentTemp) {
     this.temp = document.querySelector('.temp-checkbox');
     const temp = document.getElementById('weatherTemp');
+    const fahrenheit = (currentTemp * (9 / 5)) + 32;
 
-    if (this.temp.checked) {
-      currentTemp = (currentTemp * (9 / 5)) + 32;
-      temp.textContent = `${Number((currentTemp).toFixed(1))}°F`;
-    } else {
-      temp.textContent = `${Number((currentTemp).toFixed(1))}°C`;
-    }
+    temp.classList.remove('fade-anim');
+
+    setTimeout(() => {
+      requestAnimationFrame(() => {
+        temp.innerHTML = this.temp.checked ? `${Number((fahrenheit).toFixed(1))}°F` : `${Number((currentTemp).toFixed(1))}°C`;
+        temp.classList.add('fade-anim');
+      });
+    }, 250);
   }
 
   currentLocation(location) {
@@ -80,7 +92,7 @@ export default class Weather {
         imgBG.fetchBg(weather);
         weatherInfo(items);
 
-        this.setTemp(temp);
+        this.setTempRN(temp);
 
         tempSwitch.addEventListener('click', () => {
           this.setTemp(temp);
@@ -112,7 +124,6 @@ export default class Weather {
     const searchResult = searchInput.value;
 
     if (searchResult) {
-
       const cities = await fetch('city.list.json');
     }
     this.cities = searchInput;

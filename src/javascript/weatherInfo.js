@@ -14,6 +14,7 @@ export default function weatherInfo(items) {
 
   icon.src = `http://openweathermap.org/img/wn/${iconIMG}@4x.png`;
 
+  temp.classList.add('text-anim', 'fade-anim');
   temp.setAttribute('id', 'weatherTemp');
 
   header.textContent = `${countryName}, ${country}`;
