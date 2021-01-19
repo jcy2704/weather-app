@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import UnsplashBG from './unsplash';
 import weatherInfo from './weatherInfo';
 import loaderAnimation from './loaderAnimation';
