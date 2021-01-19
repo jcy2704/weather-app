@@ -2,7 +2,6 @@ export default function weatherInfo(items) {
   const { icon: iconIMG } = items.weather[0];
   const { name: countryName } = items;
   const { country } = items.sys;
-  const { temp: tempC } = items.main;
   const container = document.querySelector('.weather-container');
   const icon = document.createElement('img');
   const infoCont = document.createElement('div');
@@ -15,7 +14,7 @@ export default function weatherInfo(items) {
 
   icon.src = `http://openweathermap.org/img/wn/${iconIMG}@4x.png`;
 
-  temp.textContent = `${Number((tempC).toFixed(1))}°C`;
+  temp.setAttribute('id', 'weatherTemp');
 
   header.textContent = `${countryName}, ${country}`;
 
