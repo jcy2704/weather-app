@@ -7,7 +7,7 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(weather.currentLocation);
 }
 
-function permissionHanldler() {
+const permissionHanldler = () => {
   navigator.permissions.query({ name: 'geolocation' })
     .then(result => {
       if (result.state === 'granted') {
@@ -16,7 +16,7 @@ function permissionHanldler() {
         weather.randomLocation();
       }
     });
-}
+};
 
 permissionHanldler();
 

@@ -7,7 +7,7 @@ const weatherKey = process.env.WEATHER_API;
 
 const imgBG = new UnsplashBG();
 
-function citiesListCont() {
+const citiesListCont = () => {
   const ul = document.createElement('ul');
   const div = document.createElement('div');
 
@@ -19,7 +19,7 @@ function citiesListCont() {
   div.appendChild(ul);
 
   return div;
-}
+};
 
 export default class Weather {
   constructor() {
