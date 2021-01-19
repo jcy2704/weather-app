@@ -1,5 +1,6 @@
 import UnsplashBG from './unsplash';
 import weatherInfo from './weatherInfo';
+import loaderAnimation from './loaderAnimation';
 
 const weatherKey = process.env.WEATHER_API;
 
@@ -10,6 +11,16 @@ export default class Weather {
     this.currentLocation = this.currentLocation.bind(this);
     this.currentWeather = this.currentWeather.bind(this);
     this.randomLocation = this.randomLocation.bind(this);
+    this.loader = this.loader.bind(this);
+    this.container = document.querySelector('.weather-container');
+  }
+
+  loader(state) {
+    this.container.appendChild(loaderAnimation());
+
+    this.loadAnim = document.querySelector('.spinner-grow');
+
+    this.loadAnim.classList.add(`${state ? 'd-block' : 'd-none'}`);
   }
 
   currentLocation(location) {
@@ -20,6 +31,9 @@ export default class Weather {
   }
 
   async currentWeather(id) {
+    this.container.innerHTML = '';
+    this.loader(true);
+
     let response;
     if (this.latitude && this.longitude) {
       response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${this.latitude}&lon=${this.longitude}&units=metric&appid=${weatherKey}`, { mode: 'cors' });
@@ -34,6 +48,8 @@ export default class Weather {
 
         imgBG.fetchBg(weather);
         weatherInfo(items);
+
+        this.loader(false);
       });
   }
 
