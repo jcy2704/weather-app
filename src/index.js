@@ -7,6 +7,15 @@ if (navigator.geolocation) {
   navigator.geolocation.getCurrentPosition(weather.currentLocation);
 }
 
-const { WEATHER_API } = process.env;
+function permissionHanldler() {
+  navigator.permissions.query({ name: 'geolocation' })
+    .then(result => {
+      if (result.state === 'granted') {
+        navigator.geolocation.getCurrentPosition(weather.currentLocation);
+      } else {
+        weather.randomLocation();
+      }
+    });
+}
 
-console.log(WEATHER_API);
+permissionHanldler();

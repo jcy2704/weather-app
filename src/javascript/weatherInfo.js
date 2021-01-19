@@ -11,6 +11,8 @@ export default function weatherInfo(items) {
   const desc = document.createElement('p');
   const { description } = items.weather[0];
 
+  container.innerHTML = '';
+
   icon.src = `http://openweathermap.org/img/wn/${iconIMG}@4x.png`;
 
   temp.textContent = `${Number((tempC).toFixed(1))}°C`;
