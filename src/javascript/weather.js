@@ -21,6 +21,16 @@ const citiesListCont = () => {
   return div;
 };
 
+const compare = (a, b) => {
+  if (a.name < b.name) {
+    return -1;
+  }
+  if (a.name > b.name) {
+    return 1;
+  }
+  return 0;
+};
+
 export default class Weather {
   constructor() {
     this.currentLocation = this.currentLocation.bind(this);
@@ -135,7 +145,10 @@ export default class Weather {
         this.allCities
           .then(items => {
             const result = items.map(({ id, name, country }) => {
-              if (name.toLowerCase().indexOf(searchResult.toLowerCase()) > -1) {
+              const nameL = name.toLowerCase();
+              const countryL = country.toLowerCase();
+              const searchResultL = searchResult.toLowerCase();
+              if (nameL.indexOf(searchResultL) > -1 || countryL.indexOf(searchResultL) > -1) {
                 return { id, name, country };
               }
               return 'fail';
@@ -172,7 +185,7 @@ export default class Weather {
 
     citiesList.innerHTML = '';
 
-    await this.filteredCities.forEach(({ id, name, country }) => {
+    await this.filteredCities.sort(compare).forEach(({ id, name, country }) => {
       const li = document.createElement('li');
 
       li.setAttribute('id', id);
