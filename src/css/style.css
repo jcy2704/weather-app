@@ -1,0 +1,157 @@
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.3;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  color: white;
+}
+
+.background {
+  width: 100%;
+  height: 100vh;
+}
+
+.form-control:focus {
+  border-color: #ced4da;
+  box-shadow: none;
+}
+
+.btn:focus,
+.btn-primary:focus,
+.btn-primary:active:focus {
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.search-city {
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.search-btn {
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
+.weather-container {
+  margin-top: -90px;
+}
+
+.info-container {
+  margin-top: -30px;
+  margin-bottom: 15px;
+}
+
+.switch {
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  top: 50px;
+  right: 70px;
+}
+
+@media only screen and (max-width: 350px) {
+  .switch {
+    top: 30px;
+    right: 30px;
+  }
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #eb6e4b;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #0d6efd;
+}
+
+input:checked + .slider::before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}
+
+.fahrenheit {
+  position: relative;
+  top: 7px;
+  left: 8px;
+  font-weight: bold;
+}
+
+.celsius {
+  position: relative;
+  top: 7px;
+  right: -17px;
+  font-weight: bold;
+}
+
+.text-anim {
+  opacity: 0;
+  transition: opacity 225ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.fade-anim {
+  opacity: 1;
+  transition: opacity 300ms cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+.cities-list-cont {
+  width: 30%;
+  max-height: 200px;
+  overflow: hidden;
+}
+
+.cities-list {
+  height: 100%;
+  overflow-y: auto;
+  margin-right: -1.1rem;
+  padding-right: 1.1rem;
+}
+
+.input-warning::placeholder {
+  color: red;
+}
