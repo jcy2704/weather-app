@@ -28,6 +28,8 @@ searchBtn.addEventListener('click', () => {
   if (searchInput.value !== '') {
     weather.searchCity();
     searchInput.value = '';
+    searchInput.classList.remove('input-warning');
+    searchInput.placeholder = 'Look for a City';
   } else {
     counter += 1;
     searchInput.classList.add('input-warning');
