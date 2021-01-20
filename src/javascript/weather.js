@@ -145,7 +145,7 @@ export default class Weather {
         this.allCities
           .then(items => {
             const result = items.map(({ id, name, country }) => {
-              const nameL = name.toLowerCase();
+              const nameL = name.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
               const countryL = country.toLowerCase();
               const searchResultL = searchResult.toLowerCase();
               if (nameL.indexOf(searchResultL) > -1 || countryL.indexOf(searchResultL) > -1) {
