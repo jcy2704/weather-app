@@ -134,9 +134,9 @@ export default class Weather {
       try {
         this.allCities
           .then(items => {
-            const result = items.map(({ id, name }) => {
-              if (name.toLowerCase().startsWith(searchResult.toLowerCase())) {
-                return { id, name };
+            const result = items.map(({ id, name, country }) => {
+              if (name.toLowerCase().indexOf(searchResult.toLowerCase()) > -1) {
+                return { id, name, country };
               }
               return 'fail';
             }).filter(city => city !== 'fail');
@@ -172,12 +172,12 @@ export default class Weather {
 
     citiesList.innerHTML = '';
 
-    await this.filteredCities.forEach(({ id, name }) => {
+    await this.filteredCities.forEach(({ id, name, country }) => {
       const li = document.createElement('li');
 
       li.setAttribute('id', id);
       li.className = 'list-group-item';
-      li.textContent = name;
+      li.textContent = `${name}, ${country}`;
       li.style.color = 'black';
       li.style.cursor = 'pointer';
 

@@ -10,7 +10,7 @@ export default class unsplashAPI {
 
     const response = await fetch(`https://api.unsplash.com/search/photos?page=1?c&query=${weather}&per_page=15&orientation=landscape&client_id=${unsplashKey}`, { mode: 'cors' });
 
-    response.json().then(items => {
+    await response.json().then(items => {
       const imgURL = Math.floor(Math.random() * items.results.length) + 1;
       this.image = items.results[imgURL].urls.regular;
 
